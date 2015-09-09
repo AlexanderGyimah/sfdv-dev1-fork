@@ -1,0 +1,149 @@
+<!-- author: alexander.gyimah@accenture.com  
+     visualforce: exercise 3 
+     first version
+ -->
+<apex:page standardController="contact" standardstylesheets="false" >
+   <apex:stylesheet value="{!$Resource.TestStyles}"/>
+   <apex:sectionHeader title="Contact" subtitle="{!contact.Name}"/>
+   <apex:form >
+	   <apex:pageBlock title="Contact Detail" mode="maindetail">
+		   <apex:pageBlockButtons >
+			   <apex:commandButton value="Edit" action="{!edit}" style="background-color:yellow;background-image:none;" />
+			   <apex:commandButton value="Delete" action="{!delete}" style="background-color:yellow;background-image:none;"/>
+		   </apex:pageBlockButtons>
+		   <apex:pageBlockSection showHeader="true" title="Contact Detail" columns="2">
+			   <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Contact Owner: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OwnerID}" >
+			         	<a href="/{!id}/a?retURL=/{!contact.id}">[Change]</a>   
+			    	 </apex:outputField>   
+			   </apex:outputPanel>
+			      <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Phone: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Phone}" />
+			   </apex:outputPanel>
+			      <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Name: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Name}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Home Phone: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.HomePhone}" />
+			   </apex:outputPanel>
+			     <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Title: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Title}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Other Phone: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OtherPhone}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Department: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Department}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Fax: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Fax}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Birthdate: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Birthdate}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Email: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Email}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="importantFields">
+			         <apex:outputLabel ><b>Reports To: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.ReportsToID}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Assistant: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.AssistantName}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Lead Source: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.LeadSource}" />
+			   </apex:outputPanel>
+			     <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Lead Source: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.AssistantPhone}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>FirstLast: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.FirstLast__c}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Mailing Street: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.MailingStreet}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Mailing City: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.MailingCity}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Mailing State: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.MailingState}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Mailing Country: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.MailingCountry}" />
+			   </apex:outputPanel> 
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Mailing Postal Code: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.MailingPostalCode}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Other Street: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OtherStreet}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Other City: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OtherCity}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Other State: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OtherState}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Other Country: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OtherCountry}" />
+			   </apex:outputPanel> 
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Other Postal Code: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.OtherPostalCode}" />
+			   </apex:outputPanel>
+			    <apex:outputPanel styleClass="NotThatImportantFields">
+			         <apex:outputLabel ><b>Languages: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Languages__c}" />
+			   </apex:outputPanel>          
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+			   		 <apex:outputLabel ><b>Level: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Level__c}" />
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+				   <apex:outputLabel ><b>Created By: </b></apex:outputLabel>
+				   <apex:outputField value="{!contact.CreatedById}">
+					   <apex:outputText value="{0,date,',' MM'.'dd'.'yyyy hh':'mm}">
+							<apex:param value="{!contact.CreatedDate}" /> 
+					   </apex:outputText>
+				   </apex:outputField>
+			   </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields">
+				   <apex:outputLabel ><b>Last Modified By: </b></apex:outputLabel>
+				   <apex:outputField value="{!contact.LastModifiedById}">
+					   <apex:outputText value="{0,date,',' MM'.'dd'.'yyyy hh':'mm}">
+						   <apex:param value="{!contact.LastModifiedDate}" /> 
+					   </apex:outputText>
+				   </apex:outputField>                
+			    </apex:outputPanel>
+			   <apex:outputPanel styleClass="NotThatImportantFields"  >
+			         <apex:outputLabel ><b>Description: </b></apex:outputLabel>
+			         <apex:outputfield value="{!contact.Description}" />
+			   </apex:outputPanel>                
+		   </apex:pageBlockSection>    
+	   </apex:pageBlock>
+   </apex:form>
+
+</apex:page>

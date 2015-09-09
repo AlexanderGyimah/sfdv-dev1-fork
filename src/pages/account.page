@@ -1,0 +1,4 @@
+<!-- Visualforce: exercise 1 -->
+<apex:page standardController="account" >
+	<apex:detail />
+</apex:page>

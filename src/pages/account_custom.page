@@ -1,0 +1,77 @@
+<!-- author: alexander.gyimah@accenture.com  
+	 visualforce: exercise 2 
+ 	 first version
+ -->
+<apex:page standardController="account" >
+	<apex:sectionHeader title="Account" subtitle="{!account.Name}"/>
+	<chatter:feedWithFollowers entityId="{!account.Id}"/> 
+	<apex:pageMessages />
+	<apex:form >
+		<apex:pageBlock title="Account Detail" mode="maindetail">
+		<apex:pageBlockButtons >
+			<apex:commandButton value="Edit" action="{!edit}"/>
+			<apex:commandButton value="Delete" action="{!delete}"/>
+			<apex:commandbutton value="Include Offline" onclick="window.location='/setup/offline/offlinebriefcase.jsp?addId={!account.Id}'; return false;"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection showHeader="true" title="Account Detail" columns="2">
+			<apex:outputfield value="{!account.OwnerID}">
+				<a href="/{!id}/a?retURL=/{!id}">[Change]</a>
+			</apex:outputField>
+			<apex:outputField value="{!account.Rating}"/>
+			<apex:outputField value="{!account.Name}">
+				<a href="/acc/account_hierarchy.jsp?id={!id}">[View Hierarchy]</a>
+			</apex:outputField>  
+			<apex:pageBlockSectionItem >
+				<apex:outputlabel value="Label"/>
+				<apex:outputText value="value"/>
+			</apex:pageBlockSectionItem>
+			
+			<apex:outputField value="{!account.Phone}"/> 
+			<apex:outputField value="{!account.ParentID}"/> 
+			<apex:outputField value="{!account.Fax}"/> 
+			<apex:outputField value="{!account.AccountNumber}"/>   
+			<apex:outputField value="{!account.WebSite}"/>
+			<apex:outputField value="{!account.Site}"/>
+			<apex:outputField value="{!account.TickerSymbol}"/>       
+			<apex:outputField value="{!account.Type}"/>   
+			<apex:outputField value="{!account.OwnerShip}"/>
+			<apex:outputField value="{!account.Industry}"/>  
+			<apex:outputField value="{!account.NumberOfEmployees}"/>  
+			<apex:outputField value="{!account.AnnualRevenue}"/>  
+			<apex:outputField value="{!account.SIC}"/>  
+			<apex:outputField value="{!account.Activity_Count__c}"/>    
+			<apex:outputField value="{!account.ShippingStreet}" />
+			<apex:outputField value="{!account.ShippingCity}" />
+			<apex:outputField value="{!account.ShippingState}" />
+			<apex:outputField value="{!account.ShippingCountry}" />
+			<apex:outputField value="{!account.ShippingPostalCode}" />
+			<apex:outputField value="{!account.CustomerPriority__c}"/>
+			<apex:outputField value="{!account.SLA__c}"/>
+			<apex:outputField value="{!account.SLAExpirationDate__c}"/>
+			<apex:outputField value="{!account.NumberofLocations__c}"/>
+			<apex:outputField value="{!account.SLASerialNumber__c}"/>
+			<apex:outputField value="{!account.UpsellOpportunity__c}"/>
+			<apex:outputField value="{!account.Active__c}"/>
+			<apex:outputField value="{!account.CreatedById}">
+				<apex:outputText value="{0,date,',' MM'.'dd'.'yyyy hh':'mm}">
+					<apex:param value="{!account.CreatedDate}" /> 
+				</apex:outputText>
+				<apex:outputText value="{!account.CreatedDate}"/>
+			</apex:outputField>
+			<apex:outputField value="{!account.LastModifiedById}">
+				<apex:outputText value="{0,date,',' MM'.'dd'.'yyyy hh':'mm}">
+					<apex:param value="{!account.LastModifiedDate}" /> 
+				</apex:outputText>
+			</apex:outputField>
+			<apex:outputField value="{!account.Description}"/>
+		</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+	<apex:relatedList subject="{!account}" list="contacts" />
+	<apex:relatedList subject="{!account}" list="opportunities" />
+	<apex:relatedList subject="{!account}" list="Cases" />
+	<apex:relatedList subject="{!account}" list="OpenActivities" />
+	<apex:relatedList subject="{!account}" list="ActivityHistories" />
+	<apex:relatedList subject="{!account}" list="CombinedAttachments" />
+	<apex:relatedList subject="{!account}" list="AccountPartnersFrom" />
+</apex:page>

@@ -1,0 +1,38 @@
+<apex:page controller="MultipleLeadsController" >
+  <!-- <apex:sectionHeader title="Leads" /> 
+  <apex:pageBlockTable value="{!leads}" var="lead" >  
+	  	 <apex:outputField value="{!Lead.LastName}">
+		 <apex:inlineEditSupport event="ondblclick"/>
+	 	</apex:outputField>
+    </apex:pageBlockTable>  
+  -->
+  <apex:pageMessages />
+  <apex:form >
+    <apex:pageBlock title="Create Leads" mode="maindetail">
+	  	<apex:pageBlockButtons >
+				<apex:commandButton value="Add Lead" immediate="true" action="{!add}" />
+				<apex:commandButton value="Save All" action="{!saveAll}"/>
+		</apex:pageBlockButtons>
+	    <apex:pageBlockTable value="{!leads}" var="lead" id="Leadtable">
+	        <apex:column headerValue="Last Name">
+	         	<apex:inputField value="{!Lead.LastName}" required="true"/>
+		 	</apex:column>
+		 	<apex:column headerValue="First Name">	
+		 		<apex:outputField value="{!Lead.FirstName}">
+			 		<apex:inlineEditSupport event="ondblclick"/>
+		 		</apex:outputField>
+		 	</apex:column>
+		 	<apex:column headerValue="Email">	
+		 		<apex:outputField value="{!Lead.Email}">
+			 		<apex:inlineEditSupport event="ondblclick"/>
+		 		</apex:outputField>
+	        </apex:column>
+	        <apex:column headerValue="Company">	
+		 		<apex:outputField value="{!Lead.Company}">
+			 		<apex:inlineEditSupport event="ondblclick"/>
+		 		</apex:outputField>
+	        </apex:column>
+	    </apex:pageBlockTable>
+	</apex:pageBlock>  				
+  </apex:form>
+</apex:page>
